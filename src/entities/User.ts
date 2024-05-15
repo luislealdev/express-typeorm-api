@@ -12,12 +12,12 @@ export class User extends BaseEntity {
     @Column()
     lastName: string
 
-    @Column()
+    @Column({ default: true })
     active: boolean
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     createdAt: Date
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
     updatedAt: Date
 }
